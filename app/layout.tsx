@@ -14,7 +14,7 @@ const spaceGrotesk = Space_Grotesk({
 });
 
 export const metadata: Metadata = {
-  title: 'Alfabetización Digital | Clase 1',
+  title: 'Alfabetización Digital | Clase Pulgarcita',
   description: 'Espacio curricular de formación docente - Pulgarcita, cultura digital e inteligencia artificial',
   generator: 'v0.app',
   icons: {

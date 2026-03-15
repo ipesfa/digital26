@@ -13,16 +13,16 @@ const topics = [
   {
     icon: BookMarked,
     title: "Michel Serres y Pulgarcita",
-    description: "Reflexiones sobre la transformacion cognitiva de las nuevas generaciones",
+    description: "Reflexiones sobre la transformación cognitiva de las nuevas generaciones",
   },
   {
     icon: Globe,
     title: "Cultura digital",
-    description: "Las practicas culturales mediadas por tecnologias y su impacto social",
+    description: "Las prácticas culturales mediadas por tecnologías y su impacto social",
   },
   {
     icon: GraduationCap,
-    title: "Transformaciones en la ensenanza",
+    title: "Transformaciones en la enseñanza",
     description: "Nuevos roles docentes y formas de organizar el conocimiento",
   },
   {
@@ -33,12 +33,12 @@ const topics = [
   {
     icon: FileText,
     title: "Escenas de aprendizaje",
-    description: "Narraciones de experiencias pedagogicas con tecnologias",
+    description: "Narraciones de experiencias pedagógicas con tecnologías",
   },
   {
     icon: MessageSquareMore,
-    title: "Reflexion critica",
-    description: "Analisis del impacto de las tecnologias en educacion",
+    title: "Reflexión crítica",
+    description: "Análisis del impacto de las tecnologías en educación",
   },
 ]
 
@@ -50,11 +50,11 @@ export function TabContenidos() {
           Contenidos
         </span>
         <h2 className="text-3xl sm:text-4xl font-bold text-foreground text-balance">
-          Que trabajamos en esta clase?
+          ¿Qué trabajamos en esta clase?
         </h2>
         <p className="text-lg text-muted-foreground max-w-2xl">
-          Los ejes principales de la Clase 1 abordan la relacion entre cultura digital, 
-          educacion e inteligencia artificial.
+          Los ejes principales de la Clase Pulgarcita abordan la relación entre cultura digital, 
+          educación e inteligencia artificial.
         </p>
       </div>
 

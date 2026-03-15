@@ -4,6 +4,7 @@ import { useState } from "react"
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
 import { TabInicio } from "@/components/tab-inicio"
 import { TabClase1 } from "@/components/tab-clase1"
+import { TabAccion } from "@/components/tab-accion"
 import { Footer } from "@/components/footer"
 import { Home, BookOpen } from "lucide-react"
 
@@ -24,12 +25,19 @@ export default function HomePage() {
                 <Home className="w-4 h-4" />
                 <span className="hidden sm:inline">Inicio</span>
               </TabsTrigger>
-              <TabsTrigger 
-                value="clase1" 
+              <TabsTrigger
+                value="clase1"
                 className="data-[state=active]:bg-primary/10 data-[state=active]:text-primary gap-2 px-4"
               >
                 <BookOpen className="w-4 h-4" />
-                <span className="hidden sm:inline">Clase 1</span>
+                <span className="hidden sm:inline">Pulgarcita</span>
+              </TabsTrigger>
+              <TabsTrigger
+                value="accion"
+                className="data-[state=active]:bg-primary/10 data-[state=active]:text-primary gap-2 px-4"
+              >
+                <span className="w-4 h-4 flex items-center justify-center text-xs">🚀</span>
+                <span className="hidden sm:inline">Acción</span>
               </TabsTrigger>
               {/* Futuras clases se agregan aqui */}
             </TabsList>
@@ -44,6 +52,9 @@ export default function HomePage() {
             </TabsContent>
             <TabsContent value="clase1" className="mt-0 focus-visible:outline-none">
               <TabClase1 />
+            </TabsContent>
+            <TabsContent value="accion" className="mt-0 focus-visible:outline-none">
+              <TabAccion />
             </TabsContent>
           </div>
         </main>

@@ -173,11 +173,9 @@
 @keyframes border-glow {
   0%, 100% {
     border-color: oklch(0.65 0.22 270 / 0.8);
-    box-shadow: 0 0 18px oklch(0.65 0.22 270 / 0.45);
   }
   50% {
     border-color: oklch(0.7 0.24 250 / 1);
-    box-shadow: 0 0 28px oklch(0.65 0.24 270 / 0.75);
   }
 }
 
@@ -197,7 +195,6 @@
 .btn-viaje:hover {
   animation: none;
   transform: translateY(-1px) scale(1.03);
-  box-shadow: 0 0 26px oklch(0.65 0.24 270 / 0.8);
 }
 
 @keyframes bounce-slow {
@@ -211,4 +208,26 @@
 
 .animate-bounce-slow {
   animation: bounce-slow 1.8s ease-in-out infinite;
+}
+
+/* Layout más orgánico: formas suaves y asimetría */
+.section-flow {
+  max-width: 90rem;
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: 1rem;
+  padding-right: 1rem;
+}
+@media (min-width: 640px) {
+  .section-flow { padding-left: 1.5rem; padding-right: 1.5rem; }
+}
+@media (min-width: 1024px) {
+  .section-flow { padding-left: 2rem; padding-right: 2rem; }
+}
+
+.shape-blob {
+  border-radius: 60% 40% 50% 50% / 55% 45% 55% 45%;
+}
+.shape-blob-alt {
+  border-radius: 40% 60% 55% 45% / 50% 50% 50% 50%;
 }

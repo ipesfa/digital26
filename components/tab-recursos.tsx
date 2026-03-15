@@ -13,7 +13,7 @@ const resources = [
   {
     icon: FileText,
     title: "Leer Pulgarcita",
-    description: "Texto de Michel Serres sobre la transformacion digital",
+    description: "Texto de Michel Serres sobre la transformación digital",
     color: "from-blue-500/20 to-blue-600/20",
     iconColor: "text-blue-400",
     href: "#",
@@ -21,7 +21,7 @@ const resources = [
   {
     icon: Video,
     title: "Ver video",
-    description: "Introduccion audiovisual a la cultura digital",
+    description: "Introducción audiovisual a la cultura digital",
     color: "from-red-500/20 to-red-600/20",
     iconColor: "text-red-400",
     href: "#",
@@ -37,14 +37,14 @@ const resources = [
   {
     icon: CheckSquare,
     title: "Abrir checklist",
-    description: "Lista de verificacion de actividades",
+    description: "Lista de verificación de actividades",
     color: "from-green-500/20 to-green-600/20",
     iconColor: "text-green-400",
     href: "#",
   },
   {
     icon: Presentation,
-    title: "Explorar presentacion",
+    title: "Explorar presentación",
     description: "Material visual de apoyo en Genially",
     color: "from-violet-500/20 to-violet-600/20",
     iconColor: "text-violet-400",
@@ -71,7 +71,7 @@ export function TabRecursos() {
           Recursos de la clase
         </h2>
         <p className="text-lg text-muted-foreground max-w-2xl">
-          Accede a todos los materiales necesarios para trabajar en la Clase 1.
+          Accede a todos los materiales necesarios para trabajar en la Clase Pulgarcita.
         </p>
       </div>
 

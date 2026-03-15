@@ -74,22 +74,22 @@ export function CodeTitle() {
         </div>
 
         {/* Título principal - protagonista y centrado */}
-        <div className={`relative w-fit mx-auto flex flex-col items-center ${glitchActive ? 'animate-pulse' : ''}`}>
+        <div className={`relative w-full flex flex-col items-center justify-center ${glitchActive ? 'animate-pulse' : ''}`}>
           {/* Glitch layers - mismo tamaño que el título, centrados */}
           {glitchActive && (
             <>
-              <div className="absolute inset-0 flex justify-center text-5xl sm:text-6xl md:text-7xl font-bold tracking-tight text-red-500/50 translate-x-[3px] -translate-y-0.5">
+              <div className="absolute inset-0 flex justify-center items-center text-6xl sm:text-7xl md:text-8xl font-bold tracking-tight text-red-500/50 translate-x-[3px] -translate-y-0.5">
                 {fullTitle}
               </div>
-              <div className="absolute inset-0 flex justify-center text-5xl sm:text-6xl md:text-7xl font-bold tracking-tight text-blue-500/50 -translate-x-[3px] translate-y-0.5">
+              <div className="absolute inset-0 flex justify-center items-center text-6xl sm:text-7xl md:text-8xl font-bold tracking-tight text-blue-500/50 -translate-x-[3px] translate-y-0.5">
                 {fullTitle}
               </div>
             </>
           )}
           
           {/* Main title text */}
-          <h1 className="text-5xl sm:text-6xl md:text-7xl font-bold tracking-tight relative z-10 text-center">
-            <span className="inline-flex items-baseline">
+          <h1 className="text-6xl sm:text-7xl md:text-8xl font-bold tracking-tight relative z-10 w-full flex justify-center items-baseline text-center">
+            <span className="inline-flex items-baseline justify-center">
               {getDisplayedTitle()}
               <span
                 className={`inline-block ml-2 align-baseline text-emerald-400 transition-opacity ${

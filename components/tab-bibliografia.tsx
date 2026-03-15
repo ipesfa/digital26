@@ -13,21 +13,21 @@ const references = [
     id: "serres",
     author: "Michel Serres",
     title: "Pulgarcita",
-    description: "Ensayo sobre las transformaciones cognitivas y culturales de las nuevas generaciones en la era digital. Serres reflexiona sobre como los jovenes han desarrollado nuevas formas de pensar, aprender y relacionarse con el conocimiento.",
+    description: "Ensayo sobre las transformaciones cognitivas y culturales de las nuevas generaciones en la era digital. Serres reflexiona sobre cómo los jóvenes han desarrollado nuevas formas de pensar, aprender y relacionarse con el conocimiento.",
     year: "2013",
   },
   {
     id: "cultura",
     author: "Cultura Digital",
     title: "Conceptos fundamentales",
-    description: "Marco teorico sobre las practicas culturales mediadas por tecnologias digitales, incluyendo la produccion, circulacion y consumo de contenidos en entornos virtuales.",
+    description: "Marco teórico sobre las prácticas culturales mediadas por tecnologías digitales, incluyendo la producción, circulación y consumo de contenidos en entornos virtuales.",
     year: "-",
   },
   {
     id: "ia",
-    author: "Inteligencia Artificial en Educacion",
+    author: "Inteligencia Artificial en Educación",
     title: "Perspectivas y aplicaciones",
-    description: "Aproximaciones al uso de herramientas de IA generativa en contextos educativos, con enfasis en su potencial transformador y los desafios eticos que plantean.",
+    description: "Aproximaciones al uso de herramientas de IA generativa en contextos educativos, con énfasis en su potencial transformador y los desafíos éticos que plantean.",
     year: "2024",
   },
 ]
@@ -41,10 +41,10 @@ export function TabBibliografia() {
             Referencias
           </span>
           <h2 className="text-3xl sm:text-4xl font-bold text-foreground">
-            Bibliografia
+            Bibliografía
           </h2>
           <p className="text-muted-foreground">
-            Autores y conceptos de referencia para la Clase 1
+            Autores y conceptos de referencia para la Clase Pulgarcita
           </p>
         </div>
 
@@ -79,7 +79,7 @@ export function TabBibliografia() {
                     href="#"
                     className="inline-flex items-center gap-1 mt-4 text-sm text-primary hover:text-primary/80 font-medium transition-colors"
                   >
-                    Ver mas informacion
+                    Ver más información
                     <ChevronRight className="w-4 h-4" />
                   </a>
                 </div>
