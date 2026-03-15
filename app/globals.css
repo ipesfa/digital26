@@ -142,3 +142,73 @@
     transform: translateX(100%);
   }
 }
+
+@keyframes cta-glow {
+  0%, 100% {
+    box-shadow: 0 10px 25px -5px rgb(0 0 0 / 0.15), 0 0 0 0 oklch(0.65 0.2 270 / 0.4);
+    transform: scale(1);
+  }
+  50% {
+    box-shadow: 0 10px 30px -5px rgb(0 0 0 / 0.2), 0 0 30px -5px oklch(0.65 0.2 270 / 0.5);
+    transform: scale(1.02);
+  }
+}
+
+.animate-cta-glow {
+  animation: cta-glow 2.5s ease-in-out infinite;
+}
+
+/* Botón "Comenzar el viaje" con animación de gradiente */
+@keyframes gradient-shift {
+  0%, 100% {
+    background-position: 0% 50%;
+    transform: translateY(0);
+  }
+  50% {
+    background-position: 100% 50%;
+    transform: translateY(-2px);
+  }
+}
+
+@keyframes border-glow {
+  0%, 100% {
+    border-color: oklch(0.65 0.22 270 / 0.8);
+    box-shadow: 0 0 18px oklch(0.65 0.22 270 / 0.45);
+  }
+  50% {
+    border-color: oklch(0.7 0.24 250 / 1);
+    box-shadow: 0 0 28px oklch(0.65 0.24 270 / 0.75);
+  }
+}
+
+.btn-viaje {
+  position: relative;
+  background: linear-gradient(
+    120deg,
+    oklch(0.65 0.22 270),
+    oklch(0.62 0.24 290),
+    oklch(0.65 0.22 270)
+  );
+  background-size: 200% 200%;
+  animation: gradient-shift 2.2s ease-in-out infinite, border-glow 1.8s ease-in-out infinite;
+  border: 2px solid oklch(0.65 0.22 270 / 0.8);
+}
+
+.btn-viaje:hover {
+  animation: none;
+  transform: translateY(-1px) scale(1.03);
+  box-shadow: 0 0 26px oklch(0.65 0.24 270 / 0.8);
+}
+
+@keyframes bounce-slow {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-4px);
+  }
+}
+
+.animate-bounce-slow {
+  animation: bounce-slow 1.8s ease-in-out infinite;
+}

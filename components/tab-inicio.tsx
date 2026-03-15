@@ -1,7 +1,7 @@
 "use client"
 
 import { CodeTitle } from "@/components/code-title"
-import { Sparkles, BookOpen, Users, Brain } from "lucide-react"
+import { Lightbulb, Wrench, GraduationCap, Rocket } from "lucide-react"
 
 export function TabInicio() {
   return (
@@ -11,45 +11,91 @@ export function TabInicio() {
       <div className="absolute bottom-1/4 right-1/4 w-80 h-80 bg-accent/5 rounded-full blur-3xl pointer-events-none" />
 
       <div className="relative z-10 w-full max-w-4xl mx-auto px-4">
-        {/* Badge */}
-        <div className="flex justify-center mb-10">
-          <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-primary/10 border border-primary/20">
-            <Sparkles className="w-4 h-4 text-primary" />
-            <span className="text-sm font-medium text-primary">Espacio Curricular</span>
-          </div>
-        </div>
+        {/* Docente a cargo — texto legible */}
+        <p className="text-center text-sm sm:text-base text-foreground/80 mb-4">
+          Docente a cargo: <span className="text-foreground font-medium">Prof. Leonardo Nausan</span>
+        </p>
 
         {/* Code-style title */}
         <CodeTitle />
 
-        {/* Subtitle */}
-        <p className="text-lg sm:text-xl text-muted-foreground mt-10 max-w-2xl mx-auto text-center leading-relaxed">
-          Formacion docente en cultura digital, tecnologias emergentes e inteligencia artificial aplicada a la educacion
-        </p>
+        {/* Cita sin caja */}
+        <div className="mt-10 max-w-3xl mx-auto text-center">
+          <p className="italic text-base sm:text-lg leading-relaxed text-foreground">
+            «La generación Pulgarcita tendrá que reinventar una forma de vivir juntos, instituciones y formas de ser y conocer.»
+          </p>
+          <p className="mt-3 text-sm sm:text-base font-semibold text-primary">
+            — Michel Serres
+          </p>
+          {/* Botón animado Comenzar el viaje */}
+          <button
+            type="button"
+            className="btn-viaje group mt-10 inline-flex items-center gap-2 px-8 py-4 rounded-xl font-semibold text-base text-white transition-all duration-300"
+          >
+            <span className="relative z-10 flex items-center gap-2">
+              <Rocket className="w-5 h-5 animate-bounce-slow group-hover:translate-y-[-2px] transition-transform duration-300" />
+              <span>Comenzar el viaje</span>
+            </span>
+          </button>
+        </div>
+      </div>
 
-        {/* Features grid */}
-        <div className="grid sm:grid-cols-3 gap-6 mt-16 text-left">
-          <div className="p-6 rounded-2xl bg-card/50 border border-border hover:border-primary/30 transition-colors">
-            <BookOpen className="w-8 h-8 text-primary mb-4" />
-            <h3 className="font-semibold text-foreground mb-2">Contenidos actualizados</h3>
-            <p className="text-sm text-muted-foreground">
-              Recursos sobre tecnologia educativa y herramientas emergentes
-            </p>
-          </div>
-          <div className="p-6 rounded-2xl bg-card/50 border border-border hover:border-primary/30 transition-colors">
-            <Users className="w-8 h-8 text-primary mb-4" />
-            <h3 className="font-semibold text-foreground mb-2">Aprendizaje colaborativo</h3>
-            <p className="text-sm text-muted-foreground">
-              Formato taller con actividades practicas y reflexion conjunta
-            </p>
-          </div>
-          <div className="p-6 rounded-2xl bg-card/50 border border-border hover:border-primary/30 transition-colors">
-            <Brain className="w-8 h-8 text-primary mb-4" />
-            <h3 className="font-semibold text-foreground mb-2">Pensamiento critico</h3>
-            <p className="text-sm text-muted-foreground">
-              Analisis del impacto de la IA en las practicas educativas
-            </p>
-          </div>
+      {/* Tres dimensiones — ancho completo de la página */}
+      <div className="w-full mt-16 px-4 sm:px-6 lg:px-8">
+        <div className="grid sm:grid-cols-3 gap-6 text-left max-w-7xl mx-auto">
+          {/* Dimensión conceptual */}
+          <article className="group relative overflow-hidden rounded-2xl border border-border bg-card p-6 shadow-sm hover:shadow-lg hover:shadow-primary/10 hover:border-primary/30 transition-all duration-300">
+            <div className="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-primary/80 to-primary/30 opacity-80 group-hover:opacity-100 transition-opacity" />
+            <div className="flex items-start gap-4">
+              <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-xl bg-primary/15 text-primary group-hover:bg-primary/25 transition-colors">
+                <Lightbulb className="h-6 w-6" />
+              </div>
+              <div className="min-w-0 flex-1">
+                <span className="text-xs font-medium uppercase tracking-wider text-primary">Dimensión 1</span>
+                <h3 className="mt-1 font-semibold text-foreground">Conceptual</h3>
+                <p className="mt-3 text-sm sm:text-base leading-relaxed text-foreground/90">
+                  Vinculada con la comprensión de la alfabetización digital, la cultura digital,
+                  la inteligencia artificial, la ciudadanía digital y los cambios en las prácticas
+                  de enseñanza y aprendizaje.
+                </p>
+              </div>
+            </div>
+          </article>
+          {/* Dimensión instrumental */}
+          <article className="group relative overflow-hidden rounded-2xl border border-border bg-card p-6 shadow-sm hover:shadow-lg hover:shadow-primary/10 hover:border-primary/30 transition-all duration-300">
+            <div className="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-primary/30 via-primary/80 to-primary/30 opacity-80 group-hover:opacity-100 transition-opacity" />
+            <div className="flex items-start gap-4">
+              <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-xl bg-primary/15 text-primary group-hover:bg-primary/25 transition-colors">
+                <Wrench className="h-6 w-6" />
+              </div>
+              <div className="min-w-0 flex-1">
+                <span className="text-xs font-medium uppercase tracking-wider text-primary">Dimensión 2</span>
+                <h3 className="mt-1 font-semibold text-foreground">Instrumental</h3>
+                <p className="mt-3 text-sm sm:text-base leading-relaxed text-foreground/90">
+                  Orientada a la exploración y apropiación de herramientas como Canva, Genially,
+                  Padlet, Tally, Classroom, Kahoot, Notion, formularios interactivos, repositorios,
+                  recursos audiovisuales y herramientas de IA generativa.
+                </p>
+              </div>
+            </div>
+          </article>
+          {/* Dimensión pedagógica */}
+          <article className="group relative overflow-hidden rounded-2xl border border-border bg-card p-6 shadow-sm hover:shadow-lg hover:shadow-primary/10 hover:border-primary/30 transition-all duration-300">
+            <div className="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-primary/30 to-primary/80 opacity-80 group-hover:opacity-100 transition-opacity" />
+            <div className="flex items-start gap-4">
+              <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-xl bg-primary/15 text-primary group-hover:bg-primary/25 transition-colors">
+                <GraduationCap className="h-6 w-6" />
+              </div>
+              <div className="min-w-0 flex-1">
+                <span className="text-xs font-medium uppercase tracking-wider text-primary">Dimensión 3</span>
+                <h3 className="mt-1 font-semibold text-foreground">Pedagógica</h3>
+                <p className="mt-3 text-sm sm:text-base leading-relaxed text-foreground/90">
+                  Centrada en la toma de decisiones sobre cómo, cuándo y para qué integrar estas
+                  herramientas en propuestas reales de aula, con una clara intencionalidad didáctica.
+                </p>
+              </div>
+            </div>
+          </article>
         </div>
       </div>
     </div>

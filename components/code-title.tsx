@@ -8,7 +8,7 @@ export function CodeTitle() {
   const [glitchActive, setGlitchActive] = useState(false)
   
   const titleParts = [
-    { text: "Alfabetizacion", color: "text-emerald-400" },
+    { text: "Alfabetización", color: "text-emerald-400" },
     { text: "_", color: "text-yellow-400" },
     { text: "Digital", color: "text-cyan-400" },
   ]
@@ -62,44 +62,48 @@ export function CodeTitle() {
   }
 
   return (
-    <div className="font-mono text-center relative px-4 py-8">
-      {/* Main title container */}
-      <div className="relative max-w-6xl mx-auto">
+    <div className="font-mono text-center relative px-4 py-8 flex flex-col items-center">
+      {/* Main title container - centrado */}
+      <div className="relative w-full max-w-2xl mx-auto flex flex-col items-center">
         
         {/* Decorative brackets */}
-        <div className="flex items-center justify-center gap-4 sm:gap-8 mb-6">
-          <span className="text-pink-500 text-4xl sm:text-6xl lg:text-7xl font-light animate-pulse">{"<"}</span>
-          <span className="text-muted-foreground/40 text-sm sm:text-base tracking-[0.3em] uppercase">init</span>
-          <span className="text-pink-500 text-4xl sm:text-6xl lg:text-7xl font-light animate-pulse">{"/>"}</span>
+        <div className="flex items-center justify-center gap-2 sm:gap-4 mb-4">
+          <span className="text-pink-500 text-2xl sm:text-3xl lg:text-4xl font-light animate-pulse">{"<"}</span>
+          <span className="text-muted-foreground/40 text-xs sm:text-sm tracking-[0.3em] uppercase">init</span>
+          <span className="text-pink-500 text-2xl sm:text-3xl lg:text-4xl font-light animate-pulse">{"/>"}</span>
         </div>
 
-        {/* THE MAIN TITLE - HUGE */}
-        <div className={`relative ${glitchActive ? 'animate-pulse' : ''}`}>
-          {/* Glitch layers */}
+        {/* Título principal - protagonista y centrado */}
+        <div className={`relative w-fit mx-auto flex flex-col items-center ${glitchActive ? 'animate-pulse' : ''}`}>
+          {/* Glitch layers - mismo tamaño que el título, centrados */}
           {glitchActive && (
             <>
-              <div className="absolute inset-0 text-5xl sm:text-7xl md:text-8xl lg:text-9xl font-bold tracking-tight text-red-500/50 translate-x-[3px] translate-y-[-2px]">
+              <div className="absolute inset-0 flex justify-center text-5xl sm:text-6xl md:text-7xl font-bold tracking-tight text-red-500/50 translate-x-[3px] -translate-y-0.5">
                 {fullTitle}
               </div>
-              <div className="absolute inset-0 text-5xl sm:text-7xl md:text-8xl lg:text-9xl font-bold tracking-tight text-blue-500/50 translate-x-[-3px] translate-y-[2px]">
+              <div className="absolute inset-0 flex justify-center text-5xl sm:text-6xl md:text-7xl font-bold tracking-tight text-blue-500/50 -translate-x-[3px] translate-y-0.5">
                 {fullTitle}
               </div>
             </>
           )}
           
           {/* Main title text */}
-          <h1 className="text-5xl sm:text-7xl md:text-8xl lg:text-9xl font-bold tracking-tight relative z-10">
-            {getDisplayedTitle()}
-            <span 
-              className={`inline-block w-[4px] sm:w-[6px] lg:w-[8px] h-[0.8em] bg-emerald-400 ml-1 align-middle transition-opacity ${
-                showCursor ? 'opacity-100' : 'opacity-0'
-              }`}
-              style={{ boxShadow: '0 0 20px rgba(52, 211, 153, 0.8)' }}
-            />
+          <h1 className="text-5xl sm:text-6xl md:text-7xl font-bold tracking-tight relative z-10 text-center">
+            <span className="inline-flex items-baseline">
+              {getDisplayedTitle()}
+              <span
+                className={`inline-block ml-2 align-baseline text-emerald-400 transition-opacity ${
+                  showCursor ? 'opacity-100' : 'opacity-0'
+                }`}
+                style={{ textShadow: '0 0 20px rgba(52, 211, 153, 0.8)' }}
+              >
+                /
+              </span>
+            </span>
           </h1>
           
           {/* Underline animation */}
-          <div className="mt-4 sm:mt-6 h-1 sm:h-1.5 bg-secondary rounded-full overflow-hidden max-w-4xl mx-auto">
+          <div className="mt-3 sm:mt-4 h-0.5 sm:h-1 bg-secondary rounded-full overflow-hidden w-full max-w-md mx-auto">
             <div 
               className="h-full rounded-full"
               style={{
