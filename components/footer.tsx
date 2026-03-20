@@ -6,10 +6,10 @@ export function Footer() {
           <img
             src="/logo-ipesfa.png"
             alt="Logo IPESFA"
-            className="h-14 w-auto object-contain opacity-95"
+            className="h-14 w-auto object-contain opacity-95 filter brightness-0 invert"
             loading="lazy"
           />
-          <p className="text-center text-base sm:text-lg text-white/90">
+          <p className="text-center text-sm text-muted-foreground">
             Certificación Docente - IPESFA 2026
           </p>
         </div>
