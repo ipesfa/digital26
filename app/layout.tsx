@@ -20,14 +20,14 @@ export const metadata: Metadata = {
   icons: {
     icon: [
       {
-        url: '/logo-ipesfa.png',
+        url: '/logo-ipesfa-white.svg',
         media: '(prefers-color-scheme: light)',
-        type: 'image/png',
+        type: 'image/svg+xml',
       },
       {
-        url: '/logo-ipesfa.png',
+        url: '/logo-ipesfa-white.svg',
         media: '(prefers-color-scheme: dark)',
-        type: 'image/png',
+        type: 'image/svg+xml',
       },
     ],
     apple: '/apple-icon.png',

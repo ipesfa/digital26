@@ -1,0 +1,23 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="180" height="180" viewBox="0 0 180 180" role="img" aria-label="Logo IPESFA blanco">
+  <defs>
+    <!-- Invierte los colores para que el logo quede blanco (manteniendo transparencia). -->
+    <filter id="invert">
+      <feComponentTransfer>
+        <feFuncR type="table" tableValues="1 0" />
+        <feFuncG type="table" tableValues="1 0" />
+        <feFuncB type="table" tableValues="1 0" />
+      </feComponentTransfer>
+    </filter>
+  </defs>
+
+  <image
+    href="/logo-ipesfa.png"
+    x="0"
+    y="0"
+    width="180"
+    height="180"
+    preserveAspectRatio="xMidYMid meet"
+    filter="url(#invert)"
+  />
+</svg>
+
