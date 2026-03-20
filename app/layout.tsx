@@ -28,6 +28,10 @@ export const metadata: Metadata = {
         media: '(prefers-color-scheme: dark)',
       },
       {
+        url: '/logo-ipesfa.png',
+        type: 'image/png',
+      },
+      {
         url: '/icon.svg',
         type: 'image/svg+xml',
       },
