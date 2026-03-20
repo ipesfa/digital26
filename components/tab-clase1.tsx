@@ -14,7 +14,6 @@ import {
 } from "@/components/ui/carousel"
 import { TabContenidos } from "@/components/tab-contenidos"
 import { TabResumen } from "@/components/tab-resumen"
-import { TabRecursos } from "@/components/tab-recursos"
 import { TabActividades } from "@/components/tab-actividades"
 import { TabCita } from "@/components/tab-cita"
 
@@ -142,9 +141,6 @@ export function TabClase1() {
           </TabsTrigger>
           <TabsTrigger value="resumen" className="data-[state=active]:bg-primary data-[state=active]:text-primary-foreground">
             Resumen
-          </TabsTrigger>
-          <TabsTrigger value="recursos" className="data-[state=active]:bg-primary data-[state=active]:text-primary-foreground">
-            Recursos
           </TabsTrigger>
           <TabsTrigger value="actividades" className="data-[state=active]:bg-primary data-[state=active]:text-primary-foreground">
             Actividades
@@ -455,10 +451,6 @@ export function TabClase1() {
 
         <TabsContent value="resumen" className="mt-6 focus-visible:outline-none">
           <TabResumen />
-        </TabsContent>
-
-        <TabsContent value="recursos" className="mt-6 focus-visible:outline-none">
-          <TabRecursos />
         </TabsContent>
 
         <TabsContent value="actividades" className="mt-6 focus-visible:outline-none">
