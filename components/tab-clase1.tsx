@@ -16,6 +16,7 @@ import { TabContenidos } from "@/components/tab-contenidos"
 import { TabResumen } from "@/components/tab-resumen"
 import { TabActividades } from "@/components/tab-actividades"
 import { TabCita } from "@/components/tab-cita"
+import { TabBibliografiaPulgarcita } from "@/components/tab-bibliografia-pulgarcita"
 
 function InteractiveTextButton({
   label,
@@ -147,6 +148,9 @@ export function TabClase1() {
           </TabsTrigger>
           <TabsTrigger value="cita" className="data-[state=active]:bg-primary data-[state=active]:text-primary-foreground">
             Cita
+          </TabsTrigger>
+          <TabsTrigger value="bibliografia" className="data-[state=active]:bg-primary data-[state=active]:text-primary-foreground">
+            Bibliografía y cita
           </TabsTrigger>
         </TabsList>
 
@@ -467,6 +471,10 @@ export function TabClase1() {
 
         <TabsContent value="cita" className="mt-6 focus-visible:outline-none">
           <TabCita />
+        </TabsContent>
+
+        <TabsContent value="bibliografia" className="mt-6 focus-visible:outline-none">
+          <TabBibliografiaPulgarcita />
         </TabsContent>
 
       </Tabs>
