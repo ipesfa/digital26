@@ -5,6 +5,7 @@ import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
 import { TabInicio } from "@/components/tab-inicio"
 import { TabClase1 } from "@/components/tab-clase1"
 import { TabAccion } from "@/components/tab-accion"
+import { TabRanking } from "@/components/tab-ranking"
 import { Footer } from "@/components/footer"
 import { Home, BookOpen } from "lucide-react"
 
@@ -39,6 +40,13 @@ export default function HomePage() {
                 <span className="w-4 h-4 flex items-center justify-center text-xs">🚀</span>
                 <span className="hidden sm:inline">Acción</span>
               </TabsTrigger>
+              <TabsTrigger
+                value="ranking"
+                className="gap-2 px-4 border border-amber-400/30 bg-amber-500/10 text-amber-300 data-[state=active]:bg-amber-500/25 data-[state=active]:text-amber-100"
+              >
+                <span className="w-4 h-4 flex items-center justify-center text-xs">🏆</span>
+                <span className="hidden sm:inline">Ranking de insignias</span>
+              </TabsTrigger>
               {/* Futuras clases se agregan aqui */}
             </TabsList>
           </div>
@@ -55,6 +63,9 @@ export default function HomePage() {
             </TabsContent>
             <TabsContent value="accion" className="mt-0 focus-visible:outline-none">
               <TabAccion />
+            </TabsContent>
+            <TabsContent value="ranking" className="mt-0 focus-visible:outline-none">
+              <TabRanking />
             </TabsContent>
           </div>
         </main>

@@ -326,12 +326,12 @@ export function TabClase1() {
               <h3 className="text-sm font-semibold uppercase tracking-wider text-emerald-300 mb-4">Para profundizar</h3>
               <div className="flex flex-wrap gap-3 mb-6">
                 <a
-                  href="https://sora.chatgpt.com/explore"
+                  href="https://gemini.google.com/app?android-min-version=301356232&ios-min-version=322.0&is_sa=1&hl=es_419&utm_campaign=microsite_gemini_image_generation_page&icid=microsite_gemini_image_generation_page&utm_source=gemini&utm_medium=web&_gl=1*p95nzo*_gcl_au*MTU1NDQyOTk1NS4xNzc0NjMxMTE5*_ga*ODIxMjI3MTIuMTc0Nzc0MTI3MQ..*_ga_WC57KJ50ZZ*czE3NzQ2MzExMjAkbzUkZzAkdDE3NzQ2MzExMjAkajYwJGwwJGgw"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="inline-flex items-center rounded-xl bg-emerald-600 text-white px-5 py-2.5 text-sm font-medium hover:bg-emerald-500 transition-colors"
                 >
-                  Explorar Sora ChatGPT
+                  Nano Banana
                 </a>
                 <a
                   href="https://www.datalytics.com/blog/que-es-la-ia-generativa-y-como-funciona/"
