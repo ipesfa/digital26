@@ -182,6 +182,14 @@ export function TabClase1() {
                     className="w-full h-full min-h-[200px]"
                   />
                 </div>
+                <a
+                  href="https://dialnet.unirioja.es/descarga/articulo/4903689.pdf"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center justify-center rounded-xl bg-cyan-600 text-white px-5 py-2.5 text-sm font-medium hover:bg-cyan-500 transition-colors"
+                >
+                  Lectura
+                </a>
               </div>
               <button
                 type="button"
