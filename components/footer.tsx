@@ -6,7 +6,7 @@ export function Footer() {
           <img
             src="/logo-ipesfa.png"
             alt="Logo IPESFA"
-            className="h-14 w-auto object-contain opacity-95 filter brightness-0 invert"
+            className="h-14 w-auto object-contain opacity-90 dark:brightness-0 dark:invert"
             loading="lazy"
           />
           <p className="text-center text-sm text-muted-foreground">

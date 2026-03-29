@@ -1,6 +1,6 @@
 "use client"
 
-import { useState, useEffect } from "react"
+import React, { useState, useEffect } from "react"
 import Image from "next/image"
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
 import { Dialog, DialogContent, DialogTitle } from "@/components/ui/dialog"
@@ -12,6 +12,7 @@ import {
   CarouselPrevious,
   type CarouselApi,
 } from "@/components/ui/carousel"
+import { GlowingButton } from "@/components/ui/glowing-button"
 import { TabContenidos } from "@/components/tab-contenidos"
 import { TabResumen } from "@/components/tab-resumen"
 import { TabActividades } from "@/components/tab-actividades"
@@ -101,8 +102,8 @@ function IACarousel() {
             </CarouselItem>
           ))}
         </CarouselContent>
-        <CarouselPrevious className="left-2 sm:-left-12 border-emerald-500/40 bg-background/90 hover:bg-emerald-500/20 text-emerald-400" />
-        <CarouselNext className="right-2 sm:-right-12 border-emerald-500/40 bg-background/90 hover:bg-emerald-500/20 text-emerald-400" />
+        <CarouselPrevious className="left-2 sm:-left-12 border-emerald-400 bg-background/90 hover:bg-emerald-100 dark:hover:bg-emerald-900/40 text-emerald-700 dark:text-emerald-300" />
+        <CarouselNext className="right-2 sm:-right-12 border-emerald-400 bg-background/90 hover:bg-emerald-100 dark:hover:bg-emerald-900/40 text-emerald-700 dark:text-emerald-300" />
       </Carousel>
       <div className="flex justify-center gap-2 mt-4">
         {IA_CAROUSEL_IMAGES.map((img, index) => (
@@ -113,7 +114,7 @@ function IACarousel() {
             className={`w-9 h-9 rounded-full text-sm font-semibold transition-colors ${
               current === index
                 ? "bg-emerald-500 text-white"
-                : "bg-emerald-500/20 text-emerald-400 hover:bg-emerald-500/30"
+                : "bg-emerald-100 dark:bg-emerald-900/40 text-emerald-700 dark:text-emerald-300 hover:bg-emerald-200 dark:hover:bg-emerald-800/50"
             }`}
             aria-label={`Ir a imagen ${img.label}`}
           >
@@ -125,6 +126,15 @@ function IACarousel() {
   )
 }
 
+const SUB_NAV = [
+  { value: "overview",    label: "Presentación",     gradientFrom: "#56CCF2", gradientTo: "#2F80ED" },
+  { value: "contenidos",  label: "Contenidos",        gradientFrom: "#a955ff", gradientTo: "#ea51ff" },
+  { value: "resumen",     label: "Resumen",           gradientFrom: "#80FF72", gradientTo: "#7EE8FA" },
+  { value: "actividades", label: "Actividades",       gradientFrom: "#FF9966", gradientTo: "#FF5E62" },
+  { value: "cita",        label: "Cita",              gradientFrom: "#ffa9c6", gradientTo: "#f434e2" },
+  { value: "bibliografia",label: "Bibliografía",      gradientFrom: "#fbbf24", gradientTo: "#f59e0b" },
+]
+
 export function TabClase1() {
   const [subTab, setSubTab] = useState("overview")
   const [imageEnlarged, setImageEnlarged] = useState(false)
@@ -133,25 +143,50 @@ export function TabClase1() {
   return (
     <div className="space-y-8">
       <Tabs value={subTab} onValueChange={setSubTab}>
-        <TabsList className="flex-wrap h-auto gap-2 bg-card/50 p-2 rounded-xl">
-          <TabsTrigger value="overview" className="data-[state=active]:bg-primary data-[state=active]:text-primary-foreground">
-            Presentación
-          </TabsTrigger>
-          <TabsTrigger value="contenidos" className="data-[state=active]:bg-primary data-[state=active]:text-primary-foreground">
-            Contenidos
-          </TabsTrigger>
-          <TabsTrigger value="resumen" className="data-[state=active]:bg-primary data-[state=active]:text-primary-foreground">
-            Resumen
-          </TabsTrigger>
-          <TabsTrigger value="actividades" className="data-[state=active]:bg-primary data-[state=active]:text-primary-foreground">
-            Actividades
-          </TabsTrigger>
-          <TabsTrigger value="cita" className="data-[state=active]:bg-primary data-[state=active]:text-primary-foreground">
-            Cita
-          </TabsTrigger>
-          <TabsTrigger value="bibliografia" className="data-[state=active]:bg-primary data-[state=active]:text-primary-foreground">
-            Bibliografía y cita
-          </TabsTrigger>
+        {/* Gradient pill sub-navigation */}
+        <TabsList className="flex flex-wrap gap-2.5 h-auto bg-transparent p-0">
+          {SUB_NAV.map(({ value, label, gradientFrom, gradientTo }) => {
+            const isActive = subTab === value
+            return (
+              <TabsTrigger
+                key={value}
+                value={value}
+                style={
+                  {
+                    "--gf": gradientFrom,
+                    "--gt": gradientTo,
+                  } as React.CSSProperties
+                }
+                className={[
+                  "relative h-9 rounded-full border transition-all duration-500 overflow-hidden",
+                  "focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring",
+                  "data-[state=active]:shadow-none data-[state=active]:text-white",
+                  "data-[state=inactive]:bg-card data-[state=inactive]:border-border data-[state=inactive]:text-muted-foreground",
+                  "group cursor-pointer px-4 text-xs font-semibold uppercase tracking-wider whitespace-nowrap",
+                  isActive
+                    ? "bg-[linear-gradient(45deg,var(--gf),var(--gt))] border-transparent shadow-[0_4px_14px_-4px_var(--gf)]"
+                    : "hover:border-transparent",
+                ].join(" ")}
+              >
+                {/* Gradient fill on hover (inactive) */}
+                {!isActive && (
+                  <span className="absolute inset-0 rounded-full bg-[linear-gradient(45deg,var(--gf),var(--gt))] opacity-0 transition-opacity duration-400 group-hover:opacity-100 group-data-[state=inactive]:group-hover:opacity-100" />
+                )}
+                {/* Blur glow */}
+                <span
+                  className={[
+                    "absolute top-1 inset-x-0 h-full rounded-full blur-[12px] -z-10",
+                    "bg-[linear-gradient(45deg,var(--gf),var(--gt))]",
+                    "transition-opacity duration-500",
+                    isActive ? "opacity-40" : "opacity-0 group-hover:opacity-35",
+                  ].join(" ")}
+                />
+                <span className={["relative z-10 transition-colors duration-200", !isActive && "group-hover:text-white"].join(" ")}>
+                  {label}
+                </span>
+              </TabsTrigger>
+            )
+          })}
         </TabsList>
 
         <TabsContent value="overview" className="mt-6 focus-visible:outline-none">
@@ -170,7 +205,7 @@ export function TabClase1() {
           <section className="mb-20 scroll-mt-8">
             <div className="grid lg:grid-cols-2 gap-8 items-start mb-12">
               <div className="space-y-6 lg:pt-[20%]">
-                <h2 className="text-2xl sm:text-3xl font-bold text-cyan-400">Pulgarcita</h2>
+                <h2 className="text-2xl sm:text-3xl font-bold text-cyan-700">Pulgarcita</h2>
                 <blockquote className="border-l-4 border-cyan-400/60 pl-5 italic text-foreground/90 text-lg">
                   «La generación Pulgarcita tendrá que reinventar una forma de vivir juntos, instituciones y formas de ser y conocer.» — Michel Serres
                 </blockquote>
@@ -186,14 +221,14 @@ export function TabClase1() {
                     className="w-full h-full min-h-[200px]"
                   />
                 </div>
-                <a
+                <GlowingButton
                   href="https://dialnet.unirioja.es/descarga/articulo/4903689.pdf"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="inline-flex items-center justify-center rounded-xl bg-cyan-600 text-white px-5 py-2.5 text-sm font-medium hover:bg-cyan-500 transition-colors"
+                  glowColor="#22d3ee"
                 >
                   Lectura
-                </a>
+                </GlowingButton>
               </div>
               <button
                 type="button"
@@ -232,7 +267,7 @@ export function TabClase1() {
           {/* Aula en acción */}
           <section className="mb-20 scroll-mt-8">
             <div className="mb-6">
-              <h2 className="text-2xl sm:text-3xl font-bold text-violet-400">Aula en acción</h2>
+              <h2 className="text-2xl sm:text-3xl font-bold text-violet-700">Aula en acción</h2>
             </div>
             <p className="text-foreground/90 leading-relaxed max-w-3xl mb-8">
               Nuestro curso se desarrolla a través de talleres prácticos donde el aprendizaje ocurre haciendo. Los estudiantes exploran, experimentan y reflexionan sobre el uso de tecnologías digitales en contextos educativos reales.
@@ -242,14 +277,14 @@ export function TabClase1() {
                 <Image src="/aula.jpg" alt="Aula en acción" fill className="object-cover" />
               </div>
               <div>
-                <h3 className="text-base font-semibold text-violet-300 mb-4">Herramientas utilizadas</h3>
+                <h3 className="text-base font-semibold text-violet-700 mb-4">Herramientas utilizadas</h3>
                 <div className="flex flex-wrap gap-2">
                   {HERRAMIENTAS.map((h, i) => (
                     <span
                       key={i}
-                      className="inline-flex items-center gap-2 rounded-full py-2 px-4 bg-violet-500/10 border border-violet-500/20 text-violet-200 text-sm"
+                      className="inline-flex items-center gap-2 rounded-full py-2 px-4 bg-violet-50 dark:bg-violet-950/40 border border-violet-200 dark:border-violet-800/50 text-violet-700 dark:text-violet-300 text-sm"
                     >
-                      <span className="w-6 h-6 rounded-full bg-violet-500/20 flex items-center justify-center text-violet-300 font-semibold text-xs">
+                      <span className="w-6 h-6 rounded-full bg-violet-100 dark:bg-violet-900/50 flex items-center justify-center text-violet-700 dark:text-violet-300 font-semibold text-xs">
                         {h.letra}
                       </span>
                       {h.nombre}
@@ -263,7 +298,7 @@ export function TabClase1() {
           {/* IA en el aula */}
           <section className="mb-20 scroll-mt-8">
             <div className="mb-6">
-              <h2 className="text-2xl sm:text-3xl font-bold text-emerald-400">IA en el aula</h2>
+              <h2 className="text-2xl sm:text-3xl font-bold text-emerald-700">IA en el aula</h2>
             </div>
             <p className="text-foreground/90 leading-relaxed max-w-3xl mb-8">
               La inteligencia artificial está transformando la educación de maneras que apenas comenzamos a comprender. Desde asistentes virtuales hasta sistemas de aprendizaje adaptativo, la IA ofrece nuevas posibilidades para personalizar la experiencia educativa, pero también plantea importantes desafíos éticos y pedagógicos.
@@ -295,17 +330,17 @@ export function TabClase1() {
               </div>
             </div>
             <IACarousel />
-            <div className="rounded-2xl border border-emerald-500/20 bg-emerald-500/5 p-6 lg:p-8 mb-8">
-              <h3 className="text-lg font-semibold text-emerald-300 mb-2">Actividad propuesta</h3>
+            <div className="rounded-2xl border border-emerald-200 dark:border-emerald-800/50 bg-emerald-50 dark:bg-emerald-950/30 p-6 lg:p-8 mb-8">
+              <h3 className="text-lg font-semibold text-emerald-700 mb-2">Actividad propuesta</h3>
               <p className="text-foreground/90 font-medium mb-4">«¿Texto humano o texto generado por IA?»</p>
               <div className="flex flex-wrap gap-2 mb-6">
-                <span className="bg-cyan-500/20 text-cyan-300 px-3 py-1.5 rounded-full text-xs font-medium border border-cyan-500/30">
+                <span className="bg-cyan-100 dark:bg-cyan-950/40 text-cyan-700 dark:text-cyan-300 px-3 py-1.5 rounded-full text-xs font-medium border border-cyan-200 dark:border-cyan-800/50">
                   #EfectosDeLaTecnología
                 </span>
-                <span className="bg-violet-500/20 text-violet-300 px-3 py-1.5 rounded-full text-xs font-medium border border-violet-500/30">
+                <span className="bg-violet-100 dark:bg-violet-950/40 text-violet-700 dark:text-violet-300 px-3 py-1.5 rounded-full text-xs font-medium border border-violet-200 dark:border-violet-800/50">
                   #InteligenciaArtificial
                 </span>
-                <span className="bg-emerald-500/20 text-emerald-300 px-3 py-1.5 rounded-full text-xs font-medium border border-emerald-500/30">
+                <span className="bg-emerald-100 dark:bg-emerald-950/40 text-emerald-700 dark:text-emerald-300 px-3 py-1.5 rounded-full text-xs font-medium border border-emerald-200 dark:border-emerald-800/50">
                   #EducaciónDigital
                 </span>
               </div>
@@ -321,8 +356,8 @@ export function TabClase1() {
               </div>
             </div>
 
-            <div className="rounded-xl border-l-4 border-emerald-500/50 bg-card/30 pl-5 py-4 mb-8">
-              <h3 className="text-sm font-semibold uppercase tracking-wider text-emerald-300 mb-3">Preguntas para reflexionar</h3>
+            <div className="rounded-xl border-l-4 border-emerald-400 bg-muted/40 pl-5 py-4 mb-8">
+              <h3 className="text-sm font-semibold uppercase tracking-wider text-emerald-700 mb-3">Preguntas para reflexionar</h3>
               <ul className="space-y-2 text-foreground/90">
                 <li>• ¿En qué situaciones de su vida académica o personal ya usaron o vieron usar IA?</li>
                 <li>• ¿Qué oportunidades abre la IA para docentes y estudiantes? ¿Qué riesgos o desafíos plantea?</li>
@@ -335,29 +370,29 @@ export function TabClase1() {
                   <Image src="/chat.jpeg" alt="Chat - interfaz de conversación" fill className="object-contain" />
                 </div>
               </div>
-              <h3 className="text-sm font-semibold uppercase tracking-wider text-emerald-300 mb-4">Para profundizar</h3>
+              <h3 className="text-sm font-semibold uppercase tracking-wider text-emerald-700 mb-4">Para profundizar</h3>
               <div className="flex flex-wrap gap-3 mb-6">
-                <a
+                <GlowingButton
                   href="https://gemini.google.com/app?android-min-version=301356232&ios-min-version=322.0&is_sa=1&hl=es_419&utm_campaign=microsite_gemini_image_generation_page&icid=microsite_gemini_image_generation_page&utm_source=gemini&utm_medium=web&_gl=1*p95nzo*_gcl_au*MTU1NDQyOTk1NS4xNzc0NjMxMTE5*_ga*ODIxMjI3MTIuMTc0Nzc0MTI3MQ..*_ga_WC57KJ50ZZ*czE3NzQ2MzExMjAkbzUkZzAkdDE3NzQ2MzExMjAkajYwJGwwJGgw"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="inline-flex items-center rounded-xl bg-emerald-600 text-white px-5 py-2.5 text-sm font-medium hover:bg-emerald-500 transition-colors"
+                  glowColor="#4ade80"
                 >
                   Nano Banana
-                </a>
-                <a
+                </GlowingButton>
+                <GlowingButton
                   href="https://www.datalytics.com/blog/que-es-la-ia-generativa-y-como-funciona/"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="inline-flex items-center rounded-xl border border-border bg-card px-5 py-2.5 text-sm font-medium text-foreground hover:bg-card/80 transition-colors"
+                  glowColor="#94a3b8"
                 >
                   Ver artículo completo
-                </a>
+                </GlowingButton>
               </div>
               <ul className="list-none space-y-2 text-foreground/90">
-                <li className="flex gap-2"><span className="text-emerald-400">·</span> ¿Qué es una IA generativa? <span className="text-muted-foreground">(texto, imagen, código, audio)</span></li>
-                <li className="flex gap-2"><span className="text-emerald-400">·</span> ¿Cómo se usa hoy en educación? <span className="text-muted-foreground">(asistentes, corrección, generación de recursos, personalización del aprendizaje)</span></li>
-                <li className="flex gap-2"><span className="text-emerald-400">·</span> ¿Qué preguntas éticas se abren? <span className="text-muted-foreground">(plagio, sesgo, dependencia tecnológica)</span></li>
+                <li className="flex gap-2"><span className="text-emerald-700">·</span> ¿Qué es una IA generativa? <span className="text-muted-foreground">(texto, imagen, código, audio)</span></li>
+                <li className="flex gap-2"><span className="text-emerald-700">·</span> ¿Cómo se usa hoy en educación? <span className="text-muted-foreground">(asistentes, corrección, generación de recursos, personalización del aprendizaje)</span></li>
+                <li className="flex gap-2"><span className="text-emerald-700">·</span> ¿Qué preguntas éticas se abren? <span className="text-muted-foreground">(plagio, sesgo, dependencia tecnológica)</span></li>
               </ul>
             </div>
           </section>
@@ -365,7 +400,7 @@ export function TabClase1() {
           {/* Escenas de aprendizaje */}
           <section className="scroll-mt-8">
             <div className="mb-8">
-              <h2 className="text-2xl sm:text-3xl font-bold text-amber-400">Escenas de aprendizaje</h2>
+              <h2 className="text-2xl sm:text-3xl font-bold text-amber-800">Escenas de aprendizaje</h2>
             </div>
             <p className="text-foreground/80 max-w-2xl mb-8">
               Tres escenas para pensar la atención, la autoría y el aprendizaje en la era digital.
@@ -383,8 +418,8 @@ export function TabClase1() {
                     Clic para agrandar
                   </span>
                 </button>
-                <div className="p-5 bg-card/50">
-                  <span className="text-xs font-semibold text-amber-400">Escena 1</span>
+                <div className="p-5 bg-muted/40">
+                  <span className="text-xs font-semibold text-amber-700">Escena 1</span>
                   <h3 className="text-lg font-semibold text-foreground mt-1 mb-2">Pulgarcita en el aula</h3>
                   <p className="text-sm text-foreground/90 leading-relaxed">
                     Una adolescente entra a clase mientras responde mensajes de voz, mira TikTok y chatea en Discord. El profesor habla de las funciones del lenguaje. Ella está, pero no está. ¿Aprende? ¿Desaprende? ¿Qué tipo de atención circula?
@@ -403,8 +438,8 @@ export function TabClase1() {
                     Clic para agrandar
                   </span>
                 </button>
-                <div className="p-5 bg-card/50">
-                  <span className="text-xs font-semibold text-amber-400">Escena 2</span>
+                <div className="p-5 bg-muted/40">
+                  <span className="text-xs font-semibold text-amber-700">Escena 2</span>
                   <h3 className="text-lg font-semibold text-foreground mt-1 mb-2">Profe ChatGPT</h3>
                   <p className="text-sm text-foreground/90 leading-relaxed">
                     Un estudiante entrega un trabajo brillante, pero el docente duda. «¿Lo hiciste vos?». El alumno responde: «Lo armé con IA, pero aprendí mucho igual». ¿Hubo trampa o hubo proceso? ¿Qué vale más: el resultado o el trayecto?
@@ -423,16 +458,16 @@ export function TabClase1() {
                     Clic para agrandar
                   </span>
                 </button>
-                <div className="p-5 bg-card/50">
-                  <span className="text-xs font-semibold text-amber-400">Escena 3</span>
+                <div className="p-5 bg-muted/40">
+                  <span className="text-xs font-semibold text-amber-700">Escena 3</span>
                   <h3 className="text-lg font-semibold text-foreground mt-1 mb-2">Tutorial de YouTube a las 3 AM</h3>
                   <p className="text-sm text-foreground/90 leading-relaxed">
                     Un joven que no entiende matemáticas encuentra a la madrugada un canal que explica con memes y ejemplos. Por primera vez, resuelve un ejercicio solo. ¿Esa escena cuenta como aprendizaje?
                   </p>
                 </div>
               </article>
-              <div className="md:col-span-3 rounded-2xl border-2 border-amber-500/40 bg-amber-500/10 p-6 lg:p-8 text-center">
-                <h3 className="text-xl font-bold text-amber-300 mb-2">Nuestra Escena</h3>
+              <div className="md:col-span-3 rounded-2xl border-2 border-amber-300 dark:border-amber-700/50 bg-amber-500/10 dark:bg-amber-900/20 p-6 lg:p-8 text-center">
+                <h3 className="text-xl font-bold text-amber-800 dark:text-amber-300 mb-2">Nuestra Escena</h3>
                 <p className="text-foreground/90 leading-relaxed max-w-2xl mx-auto">
                   Relaten, creen o reconstruyan una escena significativa. Puede ser con texto, collage, video, podcast, memes, etc.
                 </p>

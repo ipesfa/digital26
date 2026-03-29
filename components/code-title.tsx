@@ -120,17 +120,17 @@ export function CodeTitle() {
         <div className="mt-8 sm:mt-12 flex flex-col items-center gap-3">
           <div className="flex items-center gap-2 text-muted-foreground">
             <span className="text-emerald-500">$</span>
-            <span className="text-sm sm:text-base lg:text-lg">~/formacion-docente</span>
+            <span className="text-sm sm:text-base lg:text-lg">~/formación-docente</span>
             <span className="text-yellow-500">&gt;</span>
-            <span className="text-pink-400 text-sm sm:text-base">run</span>
-            <span className="text-cyan-300 text-sm sm:text-base">espacio_curricular</span>
+            <span className="text-pink-600 text-sm sm:text-base">run</span>
+            <span className="text-cyan-600 text-sm sm:text-base">espacio_curricular</span>
           </div>
           
           <div className="flex items-center gap-2 text-xs sm:text-sm text-muted-foreground/60">
             <span className="inline-block w-2 h-2 rounded-full bg-emerald-500 animate-pulse" />
             <span>status: activo</span>
             <span className="text-muted-foreground/30">|</span>
-            <span className="text-purple-400">version: 2026</span>
+            <span className="text-purple-600">version: 2026</span>
           </div>
         </div>
 

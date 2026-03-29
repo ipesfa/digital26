@@ -1,10 +1,12 @@
 "use client"
 
+import Script from "next/script"
+
 export function TabAccion() {
   return (
     <div className="min-h-[60vh] flex flex-col gap-8">
       <div className="space-y-2">
-        <h2 className="text-2xl sm:text-3xl font-semibold tracking-tight">
+        <h2 className="text-2xl sm:text-3xl font-semibold tracking-tight text-foreground">
           Acción: espacio colaborativo
         </h2>
         <p className="text-sm sm:text-base text-muted-foreground max-w-2xl">
@@ -13,11 +15,11 @@ export function TabAccion() {
         </p>
       </div>
 
-      <div className="rounded-xl border border-border bg-card/60 overflow-hidden">
+      <div className="rounded-xl border border-border bg-muted/30 overflow-hidden shadow-sm">
         <div
           className="padlet-embed"
           style={{
-            border: "1px solid rgba(0,0,0,0.1)",
+            border: "1px solid rgba(0,0,0,0.08)",
             borderRadius: 2,
             boxSizing: "border-box",
             overflow: "hidden",
@@ -34,6 +36,11 @@ export function TabAccion() {
           />
         </div>
       </div>
+
+      <Script
+        src="https://padlet.net/embeds/v3.js"
+        strategy="lazyOnload"
+      />
     </div>
   )
 }
