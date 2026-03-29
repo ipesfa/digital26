@@ -77,8 +77,12 @@ function IACarousel() {
 
   useEffect(() => {
     if (!api) return
-    setCurrent(api.selectedScrollSnap())
-    api.on("select", () => setCurrent(api.selectedScrollSnap()))
+    const onSelect = () => setCurrent(api.selectedScrollSnap())
+    queueMicrotask(() => setCurrent(api.selectedScrollSnap()))
+    api.on("select", onSelect)
+    return () => {
+      api.off("select", onSelect)
+    }
   }, [api])
 
   return (
