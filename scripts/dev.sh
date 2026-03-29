@@ -16,4 +16,4 @@ if command -v fnm &>/dev/null; then
   fnm use 2>/dev/null || true
 fi
 
-exec pnpm exec next dev "$@"
+exec bash "$ROOT/scripts/run-next.sh" dev "$@"

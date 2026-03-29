@@ -6,13 +6,10 @@
     "node": ">=20.9.0"
   },
   "scripts": {
-    "predev": "node scripts/ensure-node.cjs",
-    "dev": "next dev",
+    "dev": "bash scripts/run-next.sh dev",
     "dev:sh": "bash scripts/dev.sh",
-    "prebuild": "node scripts/ensure-node.cjs",
-    "build": "next build",
-    "prestart": "node scripts/ensure-node.cjs",
-    "start": "next start",
+    "build": "bash scripts/run-next.sh build",
+    "start": "bash scripts/run-next.sh start",
     "lint": "eslint ."
   },
   "dependencies": {

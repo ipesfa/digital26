@@ -8,19 +8,17 @@ if (!ok) {
   Se requiere Node.js >= 20.9 (Next.js 16). Ahora: ${process.version}
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
-  Suele pasar: en otra terminal ves v20, pero ESTA sigue con v18 en el PATH
-  (Cursor/VS Code a veces no carga nvm/fnm hasta que abrís una shell nueva).
+  Si "node -v" ya dice v20 pero esto falla: pnpm (Volta/Corepack) suele ejecutar
+  scripts con OTRO Node (v18). Los scripts "dev/build/start" del repo ya usan
+  el "node" del PATH vía bash; probá de nuevo:  pnpm dev
 
-  Opción rápida (carga nvm/fnm y arranca Next):
-    pnpm run dev:sh
+  Sin nvm:  pnpm run dev:sh   (carga fnm si existe y arranca Next)
 
-  O en ESTA misma terminal, antes de pnpm dev:
-    source ~/.zshrc
-    nvm use        # o: fnm use
-    node -v        # debe ser v20.x
-    pnpm dev
+  Arreglo definitivo del gestor de paquetes (con Node 20 activo):
+    corepack enable && corepack prepare pnpm@10 --activate
+    (o reinstalar pnpm global con Node 20)
 
-  En el repo está Node 20 en .nvmrc / .node-version.
+  En el repo: Node 20 en .nvmrc / .node-version.
 
 `)
   process.exit(1)
