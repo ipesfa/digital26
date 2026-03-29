@@ -1,5 +1,36 @@
+# Dependencies
 node_modules
+
+# Next.js
 .next
+out
+build
+dist
+
+# Env
 .env
 .env.local
+.env.*.local
+
+# Debug / OS
 .DS_Store
+*.log
+npm-debug.log*
+pnpm-debug.log*
+
+# TypeScript incremental cache (no versionar)
+*.tsbuildinfo
+tsconfig.tsbuildinfo
+
+# pnpm: evita store local dentro del repo (miles de archivos → Git/IDE lentos)
+.pnpm-store
+
+# Herramientas locales (no suelen versionarse)
+.claude
+.idea
+
+# Vercel
+.vercel
+
+# Testing
+coverage
