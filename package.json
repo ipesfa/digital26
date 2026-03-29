@@ -6,8 +6,11 @@
     "node": ">=20.9.0"
   },
   "scripts": {
+    "predev": "node scripts/ensure-node.cjs",
     "dev": "next dev",
+    "prebuild": "node scripts/ensure-node.cjs",
     "build": "next build",
+    "prestart": "node scripts/ensure-node.cjs",
     "start": "next start",
     "lint": "eslint ."
   },
