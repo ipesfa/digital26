@@ -8,6 +8,7 @@
   "scripts": {
     "predev": "node scripts/ensure-node.cjs",
     "dev": "next dev",
+    "dev:sh": "bash scripts/dev.sh",
     "prebuild": "node scripts/ensure-node.cjs",
     "build": "next build",
     "prestart": "node scripts/ensure-node.cjs",

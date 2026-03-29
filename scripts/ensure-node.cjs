@@ -8,13 +8,19 @@ if (!ok) {
   Se requiere Node.js >= 20.9 (Next.js 16). Ahora: ${process.version}
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
-  En el repo ya está fijado Node 20 (.nvmrc y .node-version).
+  Suele pasar: en otra terminal ves v20, pero ESTA sigue con v18 en el PATH
+  (Cursor/VS Code a veces no carga nvm/fnm hasta que abrís una shell nueva).
 
-  • nvm:   nvm install 20 && nvm use
-  • fnm:   fnm install && fnm use
-  • Volta: volta install node@20
+  Opción rápida (carga nvm/fnm y arranca Next):
+    pnpm run dev:sh
 
-  Comprueba: node -v   → debe ser v20.x o superior
+  O en ESTA misma terminal, antes de pnpm dev:
+    source ~/.zshrc
+    nvm use        # o: fnm use
+    node -v        # debe ser v20.x
+    pnpm dev
+
+  En el repo está Node 20 en .nvmrc / .node-version.
 
 `)
   process.exit(1)
