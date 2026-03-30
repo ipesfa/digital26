@@ -10,7 +10,8 @@
     "dev:sh": "bash scripts/dev.sh",
     "build": "bash scripts/run-next.sh build",
     "start": "bash scripts/run-next.sh start",
-    "lint": "eslint ."
+    "lint": "eslint .",
+    "deps:repair": "pnpm install --force"
   },
   "dependencies": {
     "@hookform/resolvers": "^3.9.1",
