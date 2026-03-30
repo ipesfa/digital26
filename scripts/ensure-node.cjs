@@ -8,17 +8,12 @@ if (!ok) {
   Se requiere Node.js >= 20.9 (Next.js 16). Ahora: ${process.version}
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
-  Si "node -v" ya dice v20 pero esto falla: pnpm (Volta/Corepack) suele ejecutar
-  scripts con OTRO Node (v18). Los scripts "dev/build/start" del repo ya usan
-  el "node" del PATH vía bash; probá de nuevo:  pnpm dev
+  Volta suele poner Node 18 *antes* que Homebrew en PATH: el primer "node" es v18.
+  run-next.sh debería elegir otro node del PATH si hay v20; si seguís viendo esto,
+  no hay ningún Node >= 20 en el PATH de este proceso (instalá node@20 o reordená PATH).
 
-  Sin nvm:  pnpm run dev:sh   (carga fnm si existe y arranca Next)
-
-  Arreglo definitivo del gestor de paquetes (con Node 20 activo):
+  Arreglo recomendado: con Homebrew Node 20 en el PATH antes que ~/.volta/bin, o:
     corepack enable && corepack prepare pnpm@10 --activate
-    (o reinstalar pnpm global con Node 20)
-
-  En el repo: Node 20 en .nvmrc / .node-version.
 
 `)
   process.exit(1)
