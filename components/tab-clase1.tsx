@@ -18,6 +18,16 @@ import { TabResumen } from "@/components/tab-resumen"
 import { TabActividades } from "@/components/tab-actividades"
 import { TabCita } from "@/components/tab-cita"
 import { TabBibliografiaPulgarcita } from "@/components/tab-bibliografia-pulgarcita"
+import { cn } from "@/lib/utils"
+import type { IconType } from "react-icons"
+import {
+  IoReaderOutline,
+  IoLayersOutline,
+  IoClipboardOutline,
+  IoConstructOutline,
+  IoChatbubblesOutline,
+  IoLibraryOutline,
+} from "react-icons/io5"
 
 function InteractiveTextButton({
   label,
@@ -130,13 +140,19 @@ function IACarousel() {
   )
 }
 
-const SUB_NAV = [
-  { value: "overview",    label: "Presentación",     gradientFrom: "#56CCF2", gradientTo: "#2F80ED" },
-  { value: "contenidos",  label: "Contenidos",        gradientFrom: "#a955ff", gradientTo: "#ea51ff" },
-  { value: "resumen",     label: "Resumen",           gradientFrom: "#80FF72", gradientTo: "#7EE8FA" },
-  { value: "actividades", label: "Actividades",       gradientFrom: "#FF9966", gradientTo: "#FF5E62" },
-  { value: "cita",        label: "Cita",              gradientFrom: "#ffa9c6", gradientTo: "#f434e2" },
-  { value: "bibliografia",label: "Bibliografía",      gradientFrom: "#fbbf24", gradientTo: "#f59e0b" },
+const SUB_NAV: {
+  value: string
+  label: string
+  Icon: IconType
+  gradientFrom: string
+  gradientTo: string
+}[] = [
+  { value: "overview", label: "Presentación", Icon: IoReaderOutline, gradientFrom: "#56CCF2", gradientTo: "#2F80ED" },
+  { value: "contenidos", label: "Contenidos", Icon: IoLayersOutline, gradientFrom: "#a955ff", gradientTo: "#ea51ff" },
+  { value: "resumen", label: "Resumen", Icon: IoClipboardOutline, gradientFrom: "#80FF72", gradientTo: "#7EE8FA" },
+  { value: "actividades", label: "Actividades", Icon: IoConstructOutline, gradientFrom: "#FF9966", gradientTo: "#FF5E62" },
+  { value: "cita", label: "Cita", Icon: IoChatbubblesOutline, gradientFrom: "#ffa9c6", gradientTo: "#f434e2" },
+  { value: "bibliografia", label: "Bibliografía", Icon: IoLibraryOutline, gradientFrom: "#fbbf24", gradientTo: "#f59e0b" },
 ]
 
 export function TabClase1() {
@@ -147,9 +163,15 @@ export function TabClase1() {
   return (
     <div className="space-y-8">
       <Tabs value={subTab} onValueChange={setSubTab}>
-        {/* Gradient pill sub-navigation */}
-        <TabsList className="flex flex-wrap gap-2.5 h-auto bg-transparent p-0">
-          {SUB_NAV.map(({ value, label, gradientFrom, gradientTo }) => {
+        {/* Mismo patrón que el header (SiteNav): icono → texto al hover / activo; scroll horizontal en móvil */}
+        <TabsList
+          className={cn(
+            "flex h-auto w-full min-w-0 max-w-full flex-nowrap justify-start gap-3 sm:gap-4",
+            "overflow-x-auto overflow-y-hidden scroll-smooth bg-transparent p-0 pb-2",
+            "[-ms-overflow-style:none] [scrollbar-width:none] [&::-webkit-scrollbar]:hidden",
+          )}
+        >
+          {SUB_NAV.map(({ value, label, Icon, gradientFrom, gradientTo }) => {
             const isActive = subTab === value
             return (
               <TabsTrigger
@@ -157,35 +179,48 @@ export function TabClase1() {
                 value={value}
                 style={
                   {
-                    "--gf": gradientFrom,
-                    "--gt": gradientTo,
+                    "--gradient-from": gradientFrom,
+                    "--gradient-to": gradientTo,
                   } as React.CSSProperties
                 }
-                className={[
-                  "relative h-9 rounded-full border transition-all duration-500 overflow-hidden",
-                  "focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring",
-                  "data-[state=active]:shadow-none data-[state=active]:text-white",
-                  "data-[state=inactive]:bg-card data-[state=inactive]:border-border data-[state=inactive]:text-muted-foreground",
-                  "group cursor-pointer px-4 text-xs font-semibold uppercase tracking-wider whitespace-nowrap",
+                className={cn(
+                  "relative flex h-[42px] flex-none shrink-0 cursor-pointer items-center justify-center overflow-hidden rounded-full p-0",
+                  "border-0 shadow-none outline-none transition-all duration-500",
+                  "focus-visible:ring-2 focus-visible:ring-ring focus-visible:outline-none",
+                  "data-[state=inactive]:border data-[state=inactive]:border-gray-200 data-[state=inactive]:bg-white data-[state=inactive]:dark:border-border data-[state=inactive]:dark:bg-card",
+                  "group hover:shadow-none",
                   isActive
-                    ? "bg-[linear-gradient(45deg,var(--gf),var(--gt))] border-transparent shadow-[0_4px_14px_-4px_var(--gf)]"
-                    : "hover:border-transparent",
-                ].join(" ")}
-              >
-                {/* Gradient fill on hover (inactive) */}
-                {!isActive && (
-                  <span className="absolute inset-0 rounded-full bg-[linear-gradient(45deg,var(--gf),var(--gt))] opacity-0 transition-opacity duration-400 group-hover:opacity-100 group-data-[state=inactive]:group-hover:opacity-100" />
+                    ? "w-[130px] sm:w-[150px] shadow-md data-[state=active]:bg-[linear-gradient(45deg,var(--gradient-from),var(--gradient-to))]"
+                    : "w-[42px] shadow-sm hover:w-[130px] sm:hover:w-[150px]",
                 )}
-                {/* Blur glow */}
+              >
+                {!isActive && (
+                  <span className="absolute inset-0 rounded-full bg-[linear-gradient(45deg,var(--gradient-from),var(--gradient-to))] opacity-0 transition-all duration-500 group-hover:opacity-100" />
+                )}
                 <span
-                  className={[
-                    "absolute top-1 inset-x-0 h-full rounded-full blur-[12px] -z-10",
-                    "bg-[linear-gradient(45deg,var(--gf),var(--gt))]",
-                    "transition-opacity duration-500",
-                    isActive ? "opacity-40" : "opacity-0 group-hover:opacity-35",
-                  ].join(" ")}
+                  className={cn(
+                    "absolute top-[8px] inset-x-0 -z-10 h-full rounded-full blur-[14px]",
+                    "bg-[linear-gradient(45deg,var(--gradient-from),var(--gradient-to))]",
+                    "transition-all duration-500",
+                    isActive ? "opacity-40" : "opacity-0 group-hover:opacity-40",
+                  )}
                 />
-                <span className={["relative z-10 transition-colors duration-200", !isActive && "group-hover:text-white"].join(" ")}>
+                <span
+                  className={cn(
+                    "relative z-10 text-xl transition-all duration-300",
+                    isActive
+                      ? "w-0 scale-0 overflow-hidden text-white"
+                      : "scale-100 text-gray-500 group-hover:w-0 group-hover:scale-0 group-hover:overflow-hidden dark:text-muted-foreground",
+                  )}
+                >
+                  <Icon aria-hidden />
+                </span>
+                <span
+                  className={cn(
+                    "absolute z-10 text-xs font-semibold tracking-wider text-white uppercase transition-all duration-300 whitespace-nowrap",
+                    isActive ? "scale-100" : "scale-0 delay-100 group-hover:scale-100",
+                  )}
+                >
                   {label}
                 </span>
               </TabsTrigger>
