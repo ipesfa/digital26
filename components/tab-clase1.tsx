@@ -13,6 +13,11 @@ import {
   type CarouselApi,
 } from "@/components/ui/carousel"
 import { GlowingButton } from "@/components/ui/glowing-button"
+import {
+  Collapsible,
+  CollapsibleContent,
+  CollapsibleTrigger,
+} from "@/components/ui/collapsible"
 import { TabContenidos } from "@/components/tab-contenidos"
 import { TabResumen } from "@/components/tab-resumen"
 import { TabActividades } from "@/components/tab-actividades"
@@ -27,6 +32,7 @@ import {
   IoConstructOutline,
   IoChatbubblesOutline,
   IoLibraryOutline,
+  IoChevronDown,
 } from "react-icons/io5"
 
 function InteractiveTextButton({
@@ -260,6 +266,53 @@ export function TabClase1() {
                     className="w-full h-full min-h-[200px]"
                   />
                 </div>
+                <Collapsible className="w-full space-y-3">
+                  <CollapsibleTrigger asChild>
+                    <button
+                      type="button"
+                      className="flex w-full items-center justify-between gap-3 rounded-xl border border-cyan-200 dark:border-cyan-800/60 bg-cyan-50/90 dark:bg-cyan-950/30 px-4 py-3 text-left text-sm font-semibold text-cyan-900 dark:text-cyan-100 transition-colors hover:bg-cyan-100 dark:hover:bg-cyan-950/50 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-cyan-400/50 data-[state=open]:border-cyan-300 dark:data-[state=open]:border-cyan-700 data-[state=open]:[&_svg]:rotate-180"
+                    >
+                      <span>Ideas clave de la reseña</span>
+                      <IoChevronDown
+                        className="h-5 w-5 shrink-0 transition-transform duration-200"
+                        aria-hidden
+                      />
+                    </button>
+                  </CollapsibleTrigger>
+                  <CollapsibleContent className="rounded-xl border border-border/80 bg-card/50 px-4 py-4 text-sm text-foreground/90 leading-relaxed space-y-5">
+                    <div className="space-y-2">
+                      <h4 className="font-semibold text-foreground">
+                        1. Cambió el sujeto que aprende
+                      </h4>
+                      <p>
+                        «Pulgarcita» representa a una generación que aprende, se comunica y accede
+                        al conocimiento de otra manera, porque vive inmersa en la cultura digital.
+                        El saber ya no está solo en los libros, sino distribuido en la red y en
+                        dispositivos.
+                      </p>
+                    </div>
+                    <div className="space-y-2">
+                      <h4 className="font-semibold text-foreground">
+                        2. La escuela no cambió al mismo ritmo
+                      </h4>
+                      <p>
+                        La reseña marca que Serres cuestiona a las instituciones educativas porque
+                        siguen respondiendo a modelos viejos, mientras los estudiantes ya habitan
+                        otras formas de conocer, vincularse y producir sentido.
+                      </p>
+                    </div>
+                    <div className="space-y-2">
+                      <h4 className="font-semibold text-foreground">
+                        3. La tecnología sola no alcanza
+                      </h4>
+                      <p>
+                        La autora de la reseña también critica a Serres: dice que no basta con
+                        tener Internet o dispositivos para aprender mejor. Sigue siendo necesario
+                        enseñar a pensar, a buscar, a interpretar y a aprender críticamente.
+                      </p>
+                    </div>
+                  </CollapsibleContent>
+                </Collapsible>
                 <GlowingButton
                   href="https://dialnet.unirioja.es/descarga/articulo/4903689.pdf"
                   target="_blank"
