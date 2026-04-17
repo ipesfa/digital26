@@ -1,7 +1,14 @@
 "use client"
 
 import React from "react"
-import { IoHomeOutline, IoBookOutline, IoRocketOutline, IoTrophyOutline } from "react-icons/io5"
+import {
+  IoHomeOutline,
+  IoBookOutline,
+  IoGlobeOutline,
+  IoLibraryOutline,
+  IoRocketOutline,
+  IoTrophyOutline,
+} from "react-icons/io5"
 
 interface NavItem {
   value: string
@@ -27,6 +34,20 @@ const navItems: NavItem[] = [
     gradientTo: "#2F80ED",
   },
   {
+    value: "clase2",
+    title: "Cabildo 2.0",
+    icon: <IoGlobeOutline />,
+    gradientFrom: "#6366f1",
+    gradientTo: "#a855f7",
+  },
+  {
+    value: "bibliografia",
+    title: "Bibliografía",
+    icon: <IoLibraryOutline />,
+    gradientFrom: "#64748b",
+    gradientTo: "#334155",
+  },
+  {
     value: "accion",
     title: "Acción",
     icon: <IoRocketOutline />,
@@ -49,7 +70,13 @@ interface SiteNavProps {
 
 export function SiteNav({ activeTab, onTabChange }: SiteNavProps) {
   return (
-    <ul className="flex gap-3 sm:gap-4">
+    <ul
+      className={[
+        "flex min-w-0 max-w-[min(100%,calc(100vw-7.5rem))] sm:max-w-none flex-nowrap gap-3 sm:gap-4",
+        "overflow-x-auto overflow-y-hidden scroll-smooth pb-0.5",
+        "[scrollbar-width:none] [-ms-overflow-style:none] [&::-webkit-scrollbar]:hidden",
+      ].join(" ")}
+    >
       {navItems.map(({ value, title, icon, gradientFrom, gradientTo }) => {
         const isActive = activeTab === value
         return (
