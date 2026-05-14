@@ -9,11 +9,34 @@ import { Card, CardContent, CardHeader, CardTitle, CardDescription } from "@/com
 
 const TOOLS = ["Canva", "Genially", "Padlet", "Tally", "Classroom", "Kahoot", "Notion", "CapCut", "ChatGPT"]
 
+const ESTUDIANTES = [
+  "Andrea Fabiola",
+  "Berenice Gisel",
+  "Matias Ariel",
+  "Rosa",
+  "Azucena Leticia",
+  "Laura Aurora",
+  "Analía Beatriz",
+  "Lucas Ezequiel",
+  "Carla Belén",
+  "Maria Elba",
+  "Andrea Silvana",
+  "Nicole Celeste",
+  "Lucia",
+] as const
+
 const DIM_COLORS = {
   conceptual:   { border: "#7c3aed", badgeClass: "bg-violet-100 dark:bg-violet-900/25 text-violet-700 dark:text-violet-400 border-violet-300/60 dark:border-violet-700/40" },
   instrumental: { border: "#059669", badgeClass: "bg-emerald-100 dark:bg-emerald-900/25 text-emerald-700 dark:text-emerald-400 border-emerald-300/60 dark:border-emerald-700/40" },
   pedagogica:   { border: "#ea580c", badgeClass: "bg-orange-100 dark:bg-orange-900/25 text-orange-700 dark:text-orange-400 border-orange-300/60 dark:border-orange-700/40" },
 }
+
+/** Tonos alineados con el título (emerald / cyan / violet) */
+const NOMBRE_TONOS = [
+  "text-emerald-600 dark:text-emerald-400",
+  "text-cyan-600 dark:text-cyan-400",
+  "text-violet-600 dark:text-violet-400",
+] as const
 
 export function TabInicio() {
   return (
@@ -25,9 +48,42 @@ export function TabInicio() {
         </p>
         <CodeTitle />
 
-        {/* Cita + CTA */}
-        <div className="mt-14 max-w-2xl mx-auto text-center">
-          <p className="italic text-base sm:text-lg leading-relaxed text-foreground/90">
+        {/* Nombres + cita + CTA */}
+        <div className="mt-14 max-w-5xl mx-auto w-full text-center px-3 sm:px-4">
+          <motion.div
+            className="relative mx-auto w-full max-w-4xl overflow-hidden rounded-2xl border border-violet-500/20 bg-muted/25 px-5 py-6 shadow-[0_0_48px_-18px_rgba(124,58,237,0.45)] sm:px-8 sm:py-7 dark:border-violet-400/15 dark:bg-muted/20 dark:shadow-[0_0_52px_-16px_rgba(167,139,250,0.35)]"
+            initial={{ opacity: 0, y: 8 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.4, delay: 0.12, ease: "easeOut" }}
+            role="presentation"
+          >
+            <div
+              aria-hidden
+              className="pointer-events-none absolute inset-0 bg-linear-to-br from-emerald-500/5 via-transparent to-cyan-500/8 dark:from-emerald-400/6 dark:to-cyan-400/7"
+            />
+            <div className="relative flex flex-wrap justify-center items-baseline gap-x-8 gap-y-4 sm:gap-x-10 sm:gap-y-5 font-display text-sm sm:text-base font-medium leading-relaxed tracking-wide">
+              {ESTUDIANTES.map((nombre, i) => (
+                <span
+                  key={nombre}
+                  className="inline-flex max-w-full items-baseline justify-center"
+                >
+                  {i > 0 ? (
+                    <span
+                      className="inline-flex shrink-0 select-none items-center justify-center self-center px-3 font-mono text-sm font-semibold leading-none text-pink-500/90 tabular-nums sm:px-3.5 dark:text-pink-400/85"
+                      aria-hidden
+                    >
+                      .
+                    </span>
+                  ) : null}
+                  <span className={`drop-shadow-[0_0_12px_rgba(0,0,0,0.12)] dark:drop-shadow-[0_0_14px_rgba(0,0,0,0.35)] ${NOMBRE_TONOS[i % NOMBRE_TONOS.length]}`}>
+                    {nombre}
+                  </span>
+                </span>
+              ))}
+            </div>
+          </motion.div>
+
+          <p className="mt-10 italic text-base sm:text-lg leading-relaxed text-foreground/90 font-sans">
             «La generación Pulgarcita tendrá que reinventar una forma de vivir juntos, instituciones y formas de ser y conocer.»
           </p>
           <p className="mt-4 text-sm font-semibold text-primary">— Michel Serres</p>

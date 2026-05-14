@@ -6,6 +6,7 @@ import {
   IoBookOutline,
   IoGlobeOutline,
   IoLibraryOutline,
+  IoFolderOpenOutline,
   IoRocketOutline,
   IoTrophyOutline,
 } from "react-icons/io5"
@@ -46,6 +47,13 @@ const navItems: NavItem[] = [
     icon: <IoLibraryOutline />,
     gradientFrom: "#64748b",
     gradientTo: "#334155",
+  },
+  {
+    value: "repositorio",
+    title: "Repositorio",
+    icon: <IoFolderOpenOutline />,
+    gradientFrom: "#2dd4bf",
+    gradientTo: "#6366f1",
   },
   {
     value: "accion",
