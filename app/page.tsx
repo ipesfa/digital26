@@ -4,6 +4,7 @@ import { useState } from "react"
 import { TabInicio } from "@/components/tab-inicio"
 import { TabClase1 } from "@/components/tab-clase1"
 import { TabClase2 } from "@/components/tab-clase2"
+import { TabRoadmap } from "@/components/tab-roadmap"
 import { TabAccion } from "@/components/tab-accion"
 import { TabRanking } from "@/components/tab-ranking"
 import { TabBibliografiaSecuencia } from "@/components/tab-bibliografia-secuencia"
@@ -49,6 +50,7 @@ export default function HomePage() {
           {activeTab === "inicio"   && <TabInicio />}
           {activeTab === "clase1"   && <TabClase1 />}
           {activeTab === "clase2"   && <TabClase2 />}
+          {activeTab === "roadmap"  && <TabRoadmap />}
           {activeTab === "bibliografia" && <TabBibliografiaSecuencia />}
           {activeTab === "repositorio" && <TabRepositorio />}
           {activeTab === "accion"   && <TabAccion />}

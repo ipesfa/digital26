@@ -9,6 +9,7 @@ import {
   IoFolderOpenOutline,
   IoRocketOutline,
   IoTrophyOutline,
+  IoMapOutline,
 } from "react-icons/io5"
 
 interface NavItem {
@@ -40,6 +41,13 @@ const navItems: NavItem[] = [
     icon: <IoGlobeOutline />,
     gradientFrom: "#6366f1",
     gradientTo: "#a855f7",
+  },
+  {
+    value: "roadmap",
+    title: "Road Map",
+    icon: <IoMapOutline />,
+    gradientFrom: "#10b981",
+    gradientTo: "#059669",
   },
   {
     value: "bibliografia",
