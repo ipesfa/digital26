@@ -10,6 +10,7 @@ import {
   IoRocketOutline,
   IoTrophyOutline,
   IoMapOutline,
+  IoSparklesOutline,
 } from "react-icons/io5"
 
 interface NavItem {
@@ -62,6 +63,13 @@ const navItems: NavItem[] = [
     icon: <IoFolderOpenOutline />,
     gradientFrom: "#2dd4bf",
     gradientTo: "#6366f1",
+  },
+  {
+    value: "notebook-lm",
+    title: "Notebook LM",
+    icon: <IoSparklesOutline />,
+    gradientFrom: "#8b5cf6",
+    gradientTo: "#ec4899",
   },
   {
     value: "accion",

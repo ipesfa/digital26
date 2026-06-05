@@ -1,10 +1,19 @@
 "use client"
 
-const CANVA_EMBED_SRC =
-  "https://www.canva.com/design/DAHKM8qIyf8/iAUvG20MeQDN-14BrwyfQA/watch?embed"
-
-const CANVA_LINK =
-  "https://www.canva.com/design/DAHKM8qIyf8/iAUvG20MeQDN-14BrwyfQA/watch?utm_content=DAHKM8qIyf8&utm_campaign=designshare&utm_medium=embeds&utm_source=link"
+const roadmaps = [
+  {
+    embedSrc:
+      "https://www.canva.com/design/DAHKM8qIyf8/iAUvG20MeQDN-14BrwyfQA/watch?embed",
+    link: "https://www.canva.com/design/DAHKM8qIyf8/iAUvG20MeQDN-14BrwyfQA/watch?utm_content=DAHKM8qIyf8&utm_campaign=designshare&utm_medium=embeds&utm_source=link",
+    title: "ROAD MAP SECUENCIA DIDÁCTICA P1",
+  },
+  {
+    embedSrc:
+      "https://www.canva.com/design/DAHK_9zFj_M/dwgFOoDMmt1lGN5zET9xeA/watch?embed",
+    link: "https://www.canva.com/design/DAHK_9zFj_M/dwgFOoDMmt1lGN5zET9xeA/watch?utm_content=DAHK_9zFj_M&utm_campaign=designshare&utm_medium=embeds&utm_source=link",
+    title: "road map v2",
+  },
+] as const
 
 export function TabRoadmap() {
   return (
@@ -17,31 +26,35 @@ export function TabRoadmap() {
         </p>
       </div>
 
-      <div className="w-full max-w-5xl mx-auto">
-        <div
-          className="relative w-full overflow-hidden rounded-lg shadow-[0_2px_8px_0_rgba(63,69,81,0.16)] mt-[1.6em] mb-[0.9em] will-change-transform"
-          style={{ paddingTop: "56.25%", height: 0 }}
-        >
-          <iframe
-            loading="lazy"
-            title="ROAD MAP SECUENCIA DIDÁCTICA P1"
-            className="absolute top-0 left-0 w-full h-full border-0 p-0 m-0"
-            src={CANVA_EMBED_SRC}
-            allowFullScreen
-            allow="fullscreen"
-          />
-        </div>
-        <p className="text-center text-sm text-muted-foreground">
-          <a
-            href={CANVA_LINK}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="text-primary hover:underline font-medium"
-          >
-            ROAD MAP SECUENCIA DIDÁCTICA P1
-          </a>{" "}
-          de Leonardo Nausan
-        </p>
+      <div className="w-full max-w-5xl mx-auto space-y-10">
+        {roadmaps.map(({ embedSrc, link, title }) => (
+          <div key={embedSrc}>
+            <div
+              className="relative w-full overflow-hidden rounded-lg shadow-[0_2px_8px_0_rgba(63,69,81,0.16)] mt-[1.6em] mb-[0.9em] will-change-transform"
+              style={{ paddingTop: "56.25%", height: 0 }}
+            >
+              <iframe
+                loading="lazy"
+                title={title}
+                className="absolute top-0 left-0 w-full h-full border-0 p-0 m-0"
+                src={embedSrc}
+                allowFullScreen
+                allow="fullscreen"
+              />
+            </div>
+            <p className="text-center text-sm text-muted-foreground">
+              <a
+                href={link}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-primary hover:underline font-medium"
+              >
+                {title}
+              </a>{" "}
+              de Leonardo Nausan
+            </p>
+          </div>
+        ))}
       </div>
     </div>
   )
