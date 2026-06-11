@@ -11,6 +11,7 @@ import {
   IoTrophyOutline,
   IoMapOutline,
   IoSparklesOutline,
+  IoFlagOutline,
 } from "react-icons/io5"
 
 interface NavItem {
@@ -84,6 +85,13 @@ const navItems: NavItem[] = [
     icon: <IoTrophyOutline />,
     gradientFrom: "#fbbf24",
     gradientTo: "#f59e0b",
+  },
+  {
+    value: "meta",
+    title: "Meta",
+    icon: <IoFlagOutline />,
+    gradientFrom: "#7c3aed",
+    gradientTo: "#db2777",
   },
 ]
 

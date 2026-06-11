@@ -10,6 +10,7 @@ import { TabRanking } from "@/components/tab-ranking"
 import { TabBibliografiaSecuencia } from "@/components/tab-bibliografia-secuencia"
 import { TabRepositorio } from "@/components/tab-repositorio"
 import { TabNotebookLm } from "@/components/tab-notebook-lm"
+import { TabMeta } from "@/components/tab-meta"
 import { Footer } from "@/components/footer"
 import { SiteNav } from "@/components/site-nav"
 import { ThemeToggle } from "@/components/theme-toggle"
@@ -57,6 +58,7 @@ export default function HomePage() {
           {activeTab === "notebook-lm" && <TabNotebookLm />}
           {activeTab === "accion"   && <TabAccion />}
           {activeTab === "ranking"  && <TabRanking />}
+          {activeTab === "meta"     && <TabMeta />}
         </div>
       </main>
 
